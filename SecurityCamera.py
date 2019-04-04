@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import datetime
 
 
 cap = cv2.VideoCapture(0)
@@ -9,7 +10,10 @@ while True:
 	cv2.imshow('frame', frame)
 
 	if cv2.waitKey(1) & 0xFF == ord('s'):
-		cv2.imwrite(dateStr, frame)
+		date = datetime.datetime.now().strftime("%B_%d_%Y_%H_%M")
+		datePicture = "Images/" + date + ".jpg"
+		print("Saving Image: ", datePicture)
+		cv2.imwrite(datePicture, frame)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
 
